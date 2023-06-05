@@ -7,8 +7,8 @@ import 'package:productos_app/ui/input_decorations.dart';
 
 import 'package:productos_app/widgets/widgets.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
                 child: Column(
               children: [
                 const SizedBox(height: 10),
-                Text('Login',
+                Text('Cree su Cuenta',
                     style: Theme.of(context).textTheme.headlineMedium),
                 const SizedBox(height: 30),
                 ChangeNotifierProvider(
@@ -32,13 +32,13 @@ class LoginScreen extends StatelessWidget {
             const SizedBox(height: 50),
             TextButton(
                 onPressed: () =>
-                    Navigator.pushReplacementNamed(context, 'register'),
+                    Navigator.pushReplacementNamed(context, 'login'),
                 style: ButtonStyle(
                     overlayColor: MaterialStatePropertyAll(
                         Colors.indigo.withOpacity(0.1)),
                     shape: const MaterialStatePropertyAll(StadiumBorder())),
                 child: const Text(
-                  'Crear una nueva cuenta',
+                  '¿Tienes una cuenta?',
                   style: TextStyle(fontSize: 18, color: Colors.black87),
                 )),
             const SizedBox(height: 50),
@@ -112,16 +112,18 @@ class _LoginForm extends StatelessWidget {
 
                       loginForm.isLoading = true;
 
-                      final String? errorMessage = await authService.login(
+                      final String? errorMessage = await authService.createUser(
                           loginForm.email, loginForm.password);
                       if (errorMessage == null) {
+                     
                         // ignore: use_build_context_synchronously
                         Navigator.pushReplacementNamed(context, 'home');
                       } else {
                         //Mostrar error en pantalla
-                        NotificationsService.showSnackbar(errorMessage);
+                        
                         loginForm.isLoading = false;
                       }
+                      
                     },
               child: Container(
                   padding:
