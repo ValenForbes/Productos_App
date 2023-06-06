@@ -26,7 +26,8 @@ class RegisterScreen extends StatelessWidget {
                     style: Theme.of(context).textTheme.headlineMedium),
                 const SizedBox(height: 30),
                 ChangeNotifierProvider(
-                    create: (_) => LoginFormProvider(), child: _LoginForm())
+                    create: (_) => LoginFormProvider(), child: _LoginForm()
+                    )
               ],
             )),
             const SizedBox(height: 50),
@@ -97,7 +98,8 @@ class _LoginForm extends StatelessWidget {
           const SizedBox(height: 30),
           MaterialButton(
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+                  borderRadius: BorderRadius.circular(10)
+                  ),
               disabledColor: Colors.grey,
               elevation: 0,
               color: Colors.deepPurple,
