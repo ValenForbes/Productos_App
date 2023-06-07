@@ -19,7 +19,7 @@ class AuthService extends ChangeNotifier {
     };
     //información del url sacada de Postman
     final url =
-        Uri.http(_baseUrl, '/v1/accounts:signUp', {'key': _firebaseToken});
+        Uri.https(_baseUrl, '/v1/accounts:signUp', {'key': _firebaseToken});
     //dispara la petición htpp
     final resp = await http.post(url, body: json.encode(authData));
     //se decodifica
@@ -43,8 +43,7 @@ class AuthService extends ChangeNotifier {
       'returnSecureToken': true
     };
     //información del url sacada de Postman
-    final url = Uri.http(
-        _baseUrl, '/v1/accounts:signInWithPassword', {'key': _firebaseToken});
+    final url = Uri.https(_baseUrl, '/v1/accounts:signInWithPassword', {'key': _firebaseToken});
     //dispara la petición htpp
     final resp = await http.post(url, body: json.encode(authData));
     //se decodifica
